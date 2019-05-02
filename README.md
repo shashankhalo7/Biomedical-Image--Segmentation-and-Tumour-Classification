@@ -25,7 +25,7 @@ methods like bilinear interpolation and cubic interpolation to convert the bound
 box predictions to finely grained pixel level segmentation, the proposed model
 directly segment out the image on pixel basis with the help of deconvolution network.
 The UNet model consists of different modules and operations such as :
-**1)Convolution Layer:**
+**1)Convolution Layer:**<br>
 There are two inputs to a convolutional operation
 i) A 3D volume (input image) of size (nin x nin x channels)
 ii) A set of ‘k’ filters (also called as kernels or feature extractors) each one of size (f x
@@ -47,7 +47,7 @@ volume that a particular feature extractor (filter) is looking at. In the above 
 receptive field. This is also sometimes called as the context.To put in very simple
 terms, receptive field (context) is the area of the input image that the filter covers at
 any given point of time.
-**2)Deconvolution Layer:**
+**2)Deconvolution Layer:**<br>
 The output of an unpooling layer is an enlarged, yet sparse activation map. The
 deconvolution layers densify the sparseactivations obtained by unpooling through
 convolution-like operations with multiple learned filters. However, contrary to
@@ -63,13 +63,13 @@ lower layers tend to capture overall shape of an object while the class-specific
 are encoded in the filters in higher layers. In this way, the network directly takes
 class-specific shape information into account for semantic segmentation, which is often
 ignored in other approaches based only on convolutional layers.
-**3)Add Skip Connection(Copy and Concatenate):**
+**3)Add Skip Connection(Copy and Concatenate):**  
 To get better precise locations, at every step of the decoder we use skip connections
 by concatenating the output of the transposed convolution layers with the feature
 maps from the Encoder at the same level.
 After every concatenation we again apply two consecutive regular convolutions so
 that the model can learn to assemble a more precise output
-**4)Maxpool Layer:**
+**4)Maxpool Layer:**  
 In simple words, the function of pooling is to reduce the size of the feature map so
 that we have fewer parameters in the network.
 For example:
@@ -91,7 +91,7 @@ pooling, (almost) the same information is now present in a 2x2 image.
 Now when we apply the convolution operation again, the filters in the next layer will
 be able to see larger context, i.e. as we go deeper into the network, the size of the
 image reduces however the receptive field increases.
-**5)Unpooling Layers:**
+**5)Unpooling Layers:**  
 Pooling in convolution network is designed to filter noisy activations in a lower layer by
 abstracting activations in a receptive field with a single representative value. Although it
 helps classification by retaining only robust activations in upper layers, spatial
